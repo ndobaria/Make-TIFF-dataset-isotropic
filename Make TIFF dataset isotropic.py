@@ -2,10 +2,9 @@ from skimage.io import imread, imsave
 import pyclesperanto_prototype as cle
 import os
 
-class Voxel_size:
-    x = 0.6934
-    y = 0.6934
-    z = 3.0
+voxel_size_x = 0.6934
+voxel_size_y = 0.6934
+voxel_size_z = 3.0
 	
 def makeIsotropic(input_folder_path, output_folder_path):
     file_names = os.listdir(input_folder_path)
@@ -16,7 +15,7 @@ def makeIsotropic(input_folder_path, output_folder_path):
             image = imread(os.path.join(input_folder_path, file_name))
     
             #Rescale the image to make it isotropic
-            rescaled = cle.scale(image, factor_x= Voxel_size.x, factor_y= Voxel_size.y, factor_z= Voxel_size.z, auto_size= True)
+            rescaled = cle.scale(image, factor_x= voxel_size_x, factor_y= voxel_size_y, factor_z= voxel_size_z, auto_size= True)
             
             #Create new isotropic images path
             new_file_name = os.path.splitext(file_name)[0] + '_isotropic.tif'
